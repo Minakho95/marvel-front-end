@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Characters from "./containers/Characters";
+import CharacterComics from "./containers/CharacterComics";
 import Comics from "./containers/Comics";
 import Header from "./components/Header";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -12,6 +13,9 @@ function App() {
     <Router>
       <Header />
       <Switch>
+        <Route path="/comics/:id">
+          <CharacterComics />
+        </Route>
         <Route path="/comics">
           <Comics />
         </Route>

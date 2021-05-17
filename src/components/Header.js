@@ -4,9 +4,11 @@ const Header = () => {
   return (
     <div>
       <div className="header">
-        <div className="logo-header">
-          <img src={logo} alt="logo" />
-        </div>
+        <Link to="/">
+          <div className="logo-header">
+            <img src={logo} alt="logo" />
+          </div>
+        </Link>
         <div className="menu">
           <ul>
             <Link to="/" style={{ textDecoration: "none" }}>

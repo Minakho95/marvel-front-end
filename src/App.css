@@ -74,10 +74,11 @@ body {
 }
 /* CARD */
 .card {
-  border: solid 3px blue;
+  border: solid 3px #202020;
   width: 300px;
   height: 400px;
   margin-top: 20px;
+  color: #202020;
 }
 .card img {
   width: 100%;
@@ -99,4 +100,26 @@ body {
 }
 .pagButton {
   margin: 0 5px;
+}
+.char-comics {
+  margin-top: 20px;
+  text-align: center;
+}
+.char-comics img {
+  width: 200px;
+}
+.char-comics-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1080px;
+  margin: 0 auto;
+}
+.char-comic-card {
+  margin: 0 auto;
+}
+.char-comic-card p {
+  width: 100px;
+}
+.comic-img img {
+  width: 200px;
 }
