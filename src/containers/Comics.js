@@ -1,21 +1,30 @@
+import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Comic from "../components/Comic";
+import Paginate from "../components/Paginate";
 
 const Comics = () => {
   const [data, setData] = useState();
+  const [skip, setSkip] = useState(0);
+  const [limit, setLimit] = useState(10);
   const [isLoading, setIsLoading] = useState(true);
-  const [url, setUrl] = useState();
   const [title, setTitle] = useState();
+  const [cookie, setCookie] = useState(Cookies.get("favs") || 0);
 
+  // https://marvel-michaels.herokuapp.com/comics
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const urlPram = title
-          ? `https://marvel-michaels.herokuapp.com/comics?title=${title}`
-          : `https://marvel-michaels.herokuapp.com/comics`;
-        setUrl(urlPram);
-        const response = await axios.get(url);
+        const response = await axios.get(`http://localhost:3001/comics`, {
+          params: {
+            limit: limit,
+            skip: skip,
+            ...(title ? { title: title } : {}),
+          },
+        });
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -23,16 +32,20 @@ const Comics = () => {
       }
     };
     fetchData();
-  }, [url, title]);
+  }, [title, skip]);
 
   const handleSearch = (event) => {
     setTitle(event.target.value);
+    setSkip(0);
   };
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <div className="loading-circle">
+      <CircularProgress color="secondary" />
+    </div>
   ) : (
     <div>
+      <h1>Liste de comics Marvel</h1>
       <div className="searchBar">
         <span>
           <FontAwesomeIcon icon="search" />
@@ -47,23 +60,20 @@ const Comics = () => {
       <div className="container">
         {data.results.map((comics, index) => {
           return (
-            <div className="card">
-              <img
-                src={`${comics.thumbnail.path}.${comics.thumbnail.extension}`}
-                alt=""
-              />
-              <div className="card-body">
-                <h2>{comics.title}</h2>
-                {comics.description ? (
-                  <p>{comics.description}</p>
-                ) : (
-                  <p>No description</p>
-                )}
-              </div>
-            </div>
+            <Comic
+              id={comics._id}
+              name={comics.title}
+              description={comics.description}
+              path={comics.thumbnail.path}
+              extension={comics.thumbnail.extension}
+              cookie={cookie}
+              setCookie={setCookie}
+            />
           );
         })}
       </div>
+      {/* PAGINATION */}
+      <Paginate skip={skip} setSkip={setSkip} data={data} />
     </div>
   );
 };

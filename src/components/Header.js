@@ -20,7 +20,10 @@ const Header = () => {
               <li>Comics</li>
             </Link>
 
-            <li>Favoris</li>
+            <Link to="/favorites" style={{ textDecoration: "none" }}>
+              {" "}
+              <li>Favoris</li>
+            </Link>
           </ul>
         </div>
       </div>
