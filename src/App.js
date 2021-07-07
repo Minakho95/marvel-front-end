@@ -1,4 +1,5 @@
 import "./App.css";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Characters from "./containers/Characters";
 import Favorites from "./containers/Favorites";

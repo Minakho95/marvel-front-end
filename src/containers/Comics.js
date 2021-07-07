@@ -14,17 +14,19 @@ const Comics = () => {
   const [title, setTitle] = useState();
   const [cookie, setCookie] = useState(Cookies.get("favs") || 0);
 
-  // https://marvel-michaels.herokuapp.com/comics
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/comics`, {
-          params: {
-            limit: limit,
-            skip: skip,
-            ...(title ? { title: title } : {}),
-          },
-        });
+        const response = await axios.get(
+          `https://marvel-michaels.herokuapp.com/comics`,
+          {
+            params: {
+              limit: limit,
+              skip: skip,
+              ...(title ? { title: title } : {}),
+            },
+          }
+        );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {

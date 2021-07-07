@@ -19,13 +19,16 @@ const Characters = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/characters`, {
-          params: {
-            limit: limit,
-            skip: skip,
-            ...(name ? { name: name } : {}),
-          },
-        });
+        const response = await axios.get(
+          `https://marvel-michaels.herokuapp.com/characters`,
+          {
+            params: {
+              limit: limit,
+              skip: skip,
+              ...(name ? { name: name } : {}),
+            },
+          }
+        );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
