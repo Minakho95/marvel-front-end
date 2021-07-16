@@ -15,6 +15,7 @@ const Characters = () => {
   const [skip, setSkip] = useState(0);
   const [name, setName] = useState();
   const [cookie, setCookie] = useState(Cookies.get("favs") || 0);
+  const parsed = JSON.parse(cookie);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +36,7 @@ const Characters = () => {
         console.log(error.message);
       }
     };
-
+    console.log(cookie);
     fetchData();
   }, [name, cookie, skip]);
 
@@ -67,7 +68,6 @@ const Characters = () => {
       {/* CHARACTER LIST */}
       <div className="container">
         {data.results.map((character, index) => {
-          const checkIsFav = cookie.includes(character._id);
           return (
             <Character
               id={character._id}
@@ -77,7 +77,6 @@ const Characters = () => {
               extension={character.thumbnail.extension}
               cookie={cookie}
               setCookie={setCookie}
-              checkIsFav={checkIsFav}
             />
           );
         })}
