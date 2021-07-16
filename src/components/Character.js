@@ -19,10 +19,9 @@ const Character = ({
   extension,
   cookie,
   setCookie,
+  checkIsFav,
 }) => {
-  const checkIsFav = cookie.indexOf(id) !== -1;
   const [open, setOpen] = useState(false);
-
   const handleFav = () => {
     if (!checkIsFav) {
       const newCookie = cookie ? JSON.parse(cookie) : [];

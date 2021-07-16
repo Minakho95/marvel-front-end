@@ -61,6 +61,8 @@ const Comics = () => {
       </div>
       <div className="container">
         {data.results.map((comics, index) => {
+          const checkIsFav = cookie.indexOf(comics._id) !== -1;
+
           return (
             <Comic
               id={comics._id}
@@ -70,6 +72,7 @@ const Comics = () => {
               extension={comics.thumbnail.extension}
               cookie={cookie}
               setCookie={setCookie}
+              checkIsFav={checkIsFav}
             />
           );
         })}
