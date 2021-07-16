@@ -67,7 +67,7 @@ const Characters = () => {
       {/* CHARACTER LIST */}
       <div className="container">
         {data.results.map((character, index) => {
-          const checkIsFav = cookie.indexOf(character._id) !== -1;
+          const checkIsFav = cookie.includes(character._id);
           return (
             <Character
               id={character._id}
