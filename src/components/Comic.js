@@ -21,8 +21,7 @@ const Comic = ({
   setCookie,
 }) => {
   const [open, setOpen] = useState(false);
-  const parsed = JSON.parse(cookie);
-  const checkIsFav = parsed.find((element) => element.id === id);
+  const checkIsFav = cookie.indexOf(id) !== -1;
 
   const handleFav = () => {
     if (!checkIsFav) {
