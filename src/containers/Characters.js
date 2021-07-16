@@ -36,7 +36,6 @@ const Characters = () => {
         console.log(error.message);
       }
     };
-    console.log(cookie);
     fetchData();
   }, [name, cookie, skip]);
 
