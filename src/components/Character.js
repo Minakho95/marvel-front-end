@@ -21,7 +21,7 @@ const Character = ({
   setCookie,
 }) => {
   const [open, setOpen] = useState(false);
-  const checkIsFav = cookie.indexOf(id) !== -1;
+  const checkIsFav = cookie.toString().indexOf(id) !== -1;
 
   const handleFav = () => {
     if (!checkIsFav) {
