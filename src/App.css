@@ -1,4 +1,5 @@
 /* Other rules */
+
 body {
   font-family: "Roboto Condensed", sans-serif;
 }
@@ -11,12 +12,39 @@ h2 {
 .empty-fav {
   display: flex;
   font-size: 3em;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 90vh;
+}
+.empty-fav div {
+  width: 100%;
+  text-align: center;
+}
+.loader img {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: -150px;
+  left: 0;
 }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #ed171e;
+}
+.header-none {
+  background: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/da734b28921021.55d95297d71f4.gif")
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: none;
 }
 .logo-header img {
   width: 100px;
@@ -122,7 +150,7 @@ h2 {
 .fav-star {
   position: absolute;
   margin: 10px;
-  color: yellow;
+  color: gold;
 }
 
 /* PAGINATION */

@@ -2,9 +2,9 @@ import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Comic from "../components/Comic";
 import Paginate from "../components/Paginate";
+import Loader from "../components/Loader";
 
 const Comics = () => {
   const [data, setData] = useState();
@@ -42,9 +42,9 @@ const Comics = () => {
   };
 
   return isLoading ? (
-    <div className="loading-circle">
-      <CircularProgress color="secondary" />
-    </div>
+    <>
+      <Loader />
+    </>
   ) : (
     <div>
       <h1>Liste de comics Marvel</h1>

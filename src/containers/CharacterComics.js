@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Loader from "../components/Loader";
 
 const CharacterComics = () => {
   const { id } = useParams();
@@ -18,7 +19,9 @@ const CharacterComics = () => {
     fetchData();
   }, []);
   return isLoading ? (
-    <span>Chargement...</span>
+    <>
+      <Loader />
+    </>
   ) : (
     <div>
       <div>
@@ -28,7 +31,7 @@ const CharacterComics = () => {
             alt=""
           />
           <h1>{data.name}</h1>
-          <p> Ce personnage apparait dans :</p>
+          <h3> Ce personnage apparait dans :</h3>
         </div>
 
         <div className="char-comics-list">

@@ -1,8 +1,6 @@
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Favorite from "../components/Favorite";
 
 const Favorites = () => {
@@ -13,7 +11,7 @@ const Favorites = () => {
 
   return favList.length == 0 ? (
     <div className="empty-fav">
-      <p>Pas de favoris</p>
+      <div>Pas de favoris</div>
     </div>
   ) : (
     <div>

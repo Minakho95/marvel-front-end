@@ -1,8 +1,8 @@
 import logo from "../marvel-logo.png";
 import { Link } from "react-router-dom";
-const Header = () => {
+const Header = ({ isLoading }) => {
   return (
-    <div>
+    <div className={isLoading ? "header-none" : null}>
       <div className="header">
         <Link to="/">
           <div className="logo-header">

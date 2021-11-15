@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Character from "../components/Character";
 import Paginate from "../components/Paginate";
+import Loader from "../components/Loader";
 
 const Characters = () => {
-  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [limit, setLimit] = useState(10);
+
+  const [data, setData] = useState();
+  const [limit, setLimit] = useState(8);
   const [skip, setSkip] = useState(0);
   const [name, setName] = useState();
   const [cookie, setCookie] = useState(Cookies.get("favs") || 0);
@@ -45,12 +46,14 @@ const Characters = () => {
   };
 
   return isLoading ? (
-    <div className="loading-circle">
-      <CircularProgress color="secondary" />
-    </div>
+    <>
+      <Loader />
+    </>
   ) : (
     <div>
-      <h1>Liste de personnages Marvel</h1>
+      <div>
+        <h1>Liste de personnages Marvel</h1>
+      </div>
       {/* SEARCHBAR */}
       <div className="searchBar" id="search">
         <span>
